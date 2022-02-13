@@ -1,16 +1,25 @@
-import React, { useContext } from 'react'
-import { AuthContext } from '../context/authContext'
+
+import { useEffect, useState } from 'react';
+import { userFetch } from '../data/userData';
 
 export const InfoProfile = () => {
 
-    const imgUrl = 'https://i0.wp.com/post.healthline.com/wp-content/uploads/2021/02/Female_Portrait_1296x728-header-1296x729.jpg?w=1155&h=2268'
+    
+    const [user, setUser] = useState(null)
+    const getId = sessionStorage.getItem('iDUser') !== 'undefined' ? sessionStorage.getItem('iDUser') : null; 
+    
+
+    useEffect(()=>{
+        userFetch(getId, setUser)
+    },[])
 
 
+        
     return (
         <div className='info_profile'>
-            <div className='frame_avatar'><div className='avatar_imagen'><img src={imgUrl} alt="foto perfil" /></div> </div>
+            <div className='frame_avatar'><div className='avatar_imagen'><img src={user?.image} alt="foto perfil" /></div> </div>
             <div className='name_profile'>
-                <h2>Ylerson Alonte</h2>
+                <h2>{user?.userName}</h2>
                 <span>Wildlife Photographer</span>
             </div>
             <div className='button_edit'>
