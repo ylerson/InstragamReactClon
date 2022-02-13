@@ -539,3 +539,67 @@ ul{
   color:  #1b1d29;
   font-style: italic;
 }
+
+/* Modal Style */
+
+.relative{
+  position: relative;
+}
+
+.modal{
+  position: fixed;
+  top: 50px;
+  transform: translateX(-50%);
+  left: 50%;
+  background: white;
+  width: 742px;
+  max-width: 855px;
+  min-width: 348px;
+  min-height: 391px;
+  max-height: 898px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px 1px rgba(0,0,0,0.1);
+}
+.modal header{
+  text-align: center;
+  padding: 25px;
+  border-bottom: 1px solid var(--border-color);
+}
+.modal section{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 15px;
+  align-items: center;
+  height: calc(100vmin - 219px);
+}
+.modal section h3{
+  font-weight: 300;
+  font-size: 1.6rem;
+}
+.modal section label{
+  width: 160px;
+  background-color:#64b7ff;
+  padding: 5px 8px;
+  font-size: 0.8rem;
+  color: white;
+  text-align: center;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.shadow-bg{
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  opacity: 1;
+  background-color: #1b1d295b;
+}
+.shadow-bg img{
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  right: 25px;
+  top: 25px;
+}
