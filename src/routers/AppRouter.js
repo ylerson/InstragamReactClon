@@ -1,5 +1,6 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { Routes, Route, useNavigate } from 'react-router-dom'
+import { ModalProvider } from '../context/modalContext'
 
 
 import { HomePage } from '../pages/HomePage'
@@ -12,7 +13,6 @@ import { ReelPage } from '../pages/ReelPage'
 import { Sidebar } from '../components/Sidebar'
 import { NavBar } from '../components/NavBar'
 import { Profile } from '../components/Profile'
-import { AuthContext } from '../context/authContext'
 
 export const AppRouter = () => {
 
@@ -21,7 +21,7 @@ export const AppRouter = () => {
 
    
     useEffect(() => {
-        if(tokenUser?.status != 'connected'){
+        if(tokenUser?.status !== 'connected'){
             navigate('/login', {replace: true})
         }
     }, [])
@@ -30,7 +30,10 @@ export const AppRouter = () => {
 
         <NavBar/>
         <Sidebar />
+        <ModalProvider >
         <Profile />
+
+        </ModalProvider>
         
         <Routes>
             <Route path="/" element={<HomePage />}/>

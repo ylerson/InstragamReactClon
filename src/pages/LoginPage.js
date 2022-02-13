@@ -1,4 +1,3 @@
-import React, { useContext } from 'react'
 import {useNavigate} from 'react-router-dom'
 import {GoogleLogin} from 'react-google-login'
 import { FcGoogle } from "react-icons/fc";
@@ -17,6 +16,7 @@ export const LoginPage = () => {
 
         const tokenUser =  { ...response.tokenObj, status: 'connected'};
         sessionStorage.setItem('tokenUser', JSON.stringify(tokenUser))
+        sessionStorage.setItem('iDUser', response.profileObj.googleId)
         const {name, googleId, imageUrl} = response.profileObj;
 
         const doc = {

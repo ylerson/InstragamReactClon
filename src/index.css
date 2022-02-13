@@ -548,6 +548,7 @@ ul{
 
 .modal{
   position: fixed;
+  display: none;
   top: 50px;
   transform: translateX(-50%);
   left: 50%;
@@ -585,9 +586,9 @@ ul{
   color: white;
   text-align: center;
   border-radius: 8px;
-  cursor: pointer;
 }
 .shadow-bg{
+  display: none;
   top: 0;
   left: 0;
   height: 100vh;
@@ -602,4 +603,10 @@ ul{
   position: absolute;
   right: 25px;
   top: 25px;
+}
+.active{
+  display: block;
+}
+.btn{
+cursor: pointer;
 }
