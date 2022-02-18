@@ -1,15 +1,19 @@
+import React, {useState} from 'react';
+
+
 import {useNavigate} from 'react-router-dom'
 import {GoogleLogin} from 'react-google-login'
 import { FcGoogle } from "react-icons/fc";
 
 import { client } from '../client';
+import { Loading } from '../components/Loading';
 
 const img = 'https://mott.marketing/wp-content/uploads/2017/11/Funciones-de-Instagram-1024x594.png'
 
 export const LoginPage = () => {
 
    
-
+    const [loading, setLoading] = useState(false);
     const navigate = useNavigate()
     
     const responseGoogle = (response) =>{
@@ -18,7 +22,7 @@ export const LoginPage = () => {
         sessionStorage.setItem('tokenUser', JSON.stringify(tokenUser))
         sessionStorage.setItem('iDUser', response.profileObj.googleId)
         const {name, googleId, imageUrl} = response.profileObj;
-
+        setLoading(true)
         const doc = {
             _id: googleId,
             _type: 'user',
@@ -28,12 +32,13 @@ export const LoginPage = () => {
 
         client.createIfNotExists(doc)
             .then(()=>{
-                
+                setLoading(false)
                 // console.log(response)
                 navigate('/', {replace: true})
             })
     }
 
+    if(loading) return <Loading />
 
     return (
         <div className='main_login'>

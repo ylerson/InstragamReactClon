@@ -1,3 +1,4 @@
+import React from "react"
 
 export const Button = ({value, nameClass, handle}) => {
   return (
